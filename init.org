@@ -1,8 +1,38 @@
 #+TITLE: Emacs Configuration
-* performance
+* use-package
 #+begin_src emacs-lisp
-  (setup (:package gcmh)
-  (:hook-into after-init-hook)
-  (:set gcmh-verbose init-file-debug
-        gcmh-high-cons-threshold (* 128 1024 1024)))
+  (eval-when-compile
+    (require 'use-package))
+
+  (eval-and-compile
+    (defun use-package-ensure-ignore (&rest _args) t)
+    (setq use-package-ensure-function #'use-package-ensure-ignore)
+
+    (setq use-package-always-defer t)
+    (setq use-package-hook-name-suffix nil))
+#+end_src
+* auto-minor-mode
+#+begin_src emacs-lisp
+  (use-package auto-minor-mode
+    :ensure t
+    :init
+    (eval-when-compile
+     (require 'auto-minor-mode)))
+#+end_src
+* gcmh
+#+begin_src emacs-lisp
+  (use-package gcmh
+    :ensure t
+    :hook
+    (after-init-hook . gcmh-mode)
+    :init
+    (setq gcmh-idle-delay 5)
+    (setq gcmh-high-cons-threshold (* 16 1024 1024))
+    (setq gcmh-verbose init-file-debug))
+#+end_src
+* doom themes
+#+begin_src emacs-lisp
+  (use-package doom-themes
+    :hook (doom-load-theme . doom-themes-org-config)
+    :init (setq doom-theme 'doom-tokyonight)
 #+end_src
