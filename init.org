@@ -1,0 +1,8 @@
+#+TITLE: Emacs Configuration
+* performance
+#+begin_src
+  (setup (:package gcmh)
+  (:hook-into after-init-hook)
+  (:set gcmh-verbose init-file-debug
+        gcmh-high-cons-threshold (* 128 1024 1024)))
+#+end_src

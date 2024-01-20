@@ -1,9 +1,9 @@
 {
   inputs = {
-    flake-utils.url = "github:numtide/flake-utils";
+    flake-parts.url = "github:hercules-ci/flake-parts";
 
     twist.url = "github:emacs-twist/twist.nix";
-    # org-babel.url = "github:emacs-twist/org-babel";
+    org-babel.url = "github:emacs-twist/org-babel";
 
     emacs-overlay.url = "github:nix-community/emacs-overlay";
     nixpkgs-emacs.url = "github:NixOS/nixpkgs";
@@ -34,46 +34,47 @@
     self,
     nixpkgs,
     nixpkgs-emacs,
-    flake-utils,
+    flake-parts,
+    twist,
     ...
   } @ inputs:
-    flake-utils.lib.eachDefaultSystem (
-      system: let
-        pkgs = import nixpkgs {
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = ["x86_64-linux"];
+
+      imports = [
+        flake-parts.flakeModules.easyOverlay
+      ];
+
+      flake = {
+        homeModules.emacs-config = {
+          imports = [
+            twist.homeModules.emacs-twist
+            # custom home module goes here
+          ];
+        };
+      };
+
+      perSystem = {
+        config,
+        system,
+        pkgs,
+        final,
+        ...
+      }: {
+        _module.args.pkgs = import inputs.nixpkgs {
           inherit system;
           overlays = [
-            inputs.twist.overlay
+            self.overlays.default
           ];
         };
 
-        # Allow updating nixpkgs without rebuilding the Emacs binary.
-        pkgsForEmacs = import nixpkgs-emacs {
-          inherit system;
-          overlays = [
-            inputs.emacs-overlay.overlay
-          ];
+        overlayAttrs = import ./overlay.nix {inherit inputs;} final pkgs;
+
+        packages = {
+          inherit (pkgs) emacs-config;
         };
 
-        emacs = pkgs.emacsTwist {
-          emacsPackage = pkgsForEmacs.emacsUnstable.overrideAttrs (_: {
-            version = "28.0.91";
-          });
-
-          registries = import ./registries.nix inputs;
-          lockDir = ./lock;
-          initFiles = [
-            ./init.el
-          ];
-          # inputOverrides = { };
-        };
-      in rec {
-        packages = flake-utils.lib.flattenTree {
-          inherit emacs;
-        };
-        apps = emacs.makeApps {
-          lockDirName = "lock";
-        };
-        defaultPackage = packages.emacs;
-      }
-    );
+        formatter = pkgs.alejandra;
+      };
+    };
 }
