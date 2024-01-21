@@ -100,9 +100,9 @@
           default = emacs-tmp;
         };
 
-	apps = pkgs.emacs-config.makeApps {
-	  lockDirName = "lock";
-	};
+        apps = pkgs.emacs-config.makeApps {
+          lockDirName = "lock";
+        };
 
         formatter = pkgs.alejandra;
       };

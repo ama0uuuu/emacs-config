@@ -1,6 +1,5 @@
 {
-  description =
-    "THIS IS AN AUTO-GENERATED FILE. PLEASE DON'T EDIT IT MANUALLY.";
+  description = "THIS IS AN AUTO-GENERATED FILE. PLEASE DON'T EDIT IT MANUALLY.";
   inputs = {
     auto-minor-mode = {
       flake = false;
@@ -14,5 +13,5 @@
       url = "https://gitlab.com/koral/gcmh";
     };
   };
-  outputs = { ... }: { };
+  outputs = {...}: {};
 }
