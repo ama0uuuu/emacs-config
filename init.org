@@ -34,5 +34,5 @@
 #+begin_src emacs-lisp
   (use-package doom-themes
     :hook (doom-load-theme . doom-themes-org-config)
-    :init (setq doom-theme 'doom-tokyonight)
+    :init (setq doom-theme 'doom-tokyonight))
 #+end_src

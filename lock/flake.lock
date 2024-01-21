@@ -1,0 +1,44 @@
+{
+  "nodes": {
+    "auto-minor-mode": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1571777456,
+        "narHash": "sha256-CisO+Y1FoSvi6I/q6xq4t5pFn7hgDvWvNVleYcRK+Mk=",
+        "owner": "joewreschnig",
+        "repo": "auto-minor-mode",
+        "rev": "17cfa1b54800fdef2975c0c0531dad34846a5065",
+        "type": "github"
+      },
+      "original": {
+        "owner": "joewreschnig",
+        "repo": "auto-minor-mode",
+        "type": "github"
+      }
+    },
+    "gcmh": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1605567102,
+        "narHash": "sha256-RXSs1ANy04eZAoz0ZdVVguNOEPome3AzIX1seNFVAXo=",
+        "ref": "refs/heads/master",
+        "rev": "0089f9c3a6d4e9a310d0791cf6fa8f35642ecfd9",
+        "revCount": 34,
+        "type": "git",
+        "url": "https://gitlab.com/koral/gcmh"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://gitlab.com/koral/gcmh"
+      }
+    },
+    "root": {
+      "inputs": {
+        "auto-minor-mode": "auto-minor-mode",
+        "gcmh": "gcmh"
+      }
+    }
+  },
+  "root": "root",
+  "version": 7
+}
