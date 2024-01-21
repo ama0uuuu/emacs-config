@@ -153,21 +153,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-emacs": {
-      "locked": {
-        "lastModified": 1705788817,
-        "narHash": "sha256-bsTrWRP0tLtJwmQD3LrkhWorTsyv0YLe4p5W8tWRA+w=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "4253fc8bf181a62c7f2328e7fc71bcaa8bbbd613",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nixpkgs-lib": {
       "locked": {
         "dir": "lib",
@@ -204,16 +189,17 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1705697961,
-        "narHash": "sha256-XepT3WS516evSFYkme3GrcI3+7uwXHqtHbip+t24J7E=",
+        "lastModified": 1705794880,
+        "narHash": "sha256-HcFzkhnh9HHqM4JY01H/W8LMDki8xvuj7rGvg2buqOM=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e5d1c87f5813afde2dda384ac807c57a105721cc",
+        "rev": "3211e2cf30b02c248bad92e417d5c7b2e311817e",
         "type": "github"
       },
       "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "type": "github"
       }
     },
     "nongnu": {
@@ -257,7 +243,6 @@
         "gnu-elpa": "gnu-elpa",
         "melpa": "melpa",
         "nixpkgs": "nixpkgs_2",
-        "nixpkgs-emacs": "nixpkgs-emacs",
         "nongnu": "nongnu",
         "org-babel": "org-babel",
         "twist": "twist"

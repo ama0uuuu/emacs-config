@@ -6,7 +6,7 @@
     org-babel.url = "github:emacs-twist/org-babel";
 
     emacs-overlay.url = "github:nix-community/emacs-overlay";
-    nixpkgs-emacs.url = "github:NixOS/nixpkgs";
+    nixpkgs.url = "github:NixOS/nixpkgs";
 
     melpa = {
       url = "github:melpa/melpa";
@@ -33,7 +33,6 @@
   outputs = {
     self,
     nixpkgs,
-    nixpkgs-emacs,
     flake-parts,
     twist,
     ...
